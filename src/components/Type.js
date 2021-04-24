@@ -1,19 +1,24 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
+import { formatText } from '../App'
+import Pkm from "./Pkm";
 
 function Type(props) {
   const [data,setData]=useState();
+  let { typeId } = useParams();
   useEffect(()=>{
-      axios.get(props.url) 
-          .then(response => {
-            setData(response.data);
-          })
-      .catch(err => console.log(err));
-  },[props.url]);
+    axios.get('https://pokeapi.co/api/v2/type/'+typeId) 
+        .then(response => {
+          setData(response.data);
+        })
+    .catch(err => console.log(err));
+  },[typeId,data]);
   
   return !data?null:(
     <div className="container-fluid">
-      <table className="table table-hover table-dark ">
+      <h2><span className={`badge ${data.name} my-3 text-white`}>{formatText(data.name)}</span></h2>
+      <table className="table table-hover table-dark text-center">
         <thead>
           <tr>
           <th>No.</th>

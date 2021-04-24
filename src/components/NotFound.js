@@ -1,9 +1,9 @@
 
 function NotFound() {
     return (
-      <div>
+      <h2 className="text-center font-weight-bold mt-3">
           404 Not Found
-      </div>
+      </h2>
     );
   }
   

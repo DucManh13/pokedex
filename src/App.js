@@ -4,6 +4,7 @@ import About from './components/About';
 import Home from './components/Home';
 import Contact from './components/Contact';
 import NotFound from './components/NotFound';
+import Type from './components/Type';
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
         </ul>
       </nav>
       {/* Content */}
-      <div className="text-center text-success font-weight-bold">
+      <div className="font-weight-bold">
         <Switch>
           <Route exact path="/">
             <Home/>
@@ -36,6 +37,9 @@ function App() {
           <Route path="/contact">
             <Contact/>
           </Route>
+          <Route path="/type/:typeId">
+            <Type/>
+          </Route>
           <Route path="*">
             <NotFound/>
           </Route>
@@ -43,6 +47,9 @@ function App() {
       </div>      
     </Router>
   );
+}
+export const formatText=(text)=>{
+  return text.split('-').map(word=>word.charAt(0).toUpperCase()+word.slice(1)).join(' ');
 }
 
 export default App;
