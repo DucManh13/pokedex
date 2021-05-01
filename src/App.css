@@ -117,3 +117,10 @@ a:hover {
 .speed {
   background-color: #0840e7;
 }
+
+.w-70 {
+  width:70px;
+}
+.w-120 {
+  width:120px;
+}

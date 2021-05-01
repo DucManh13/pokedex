@@ -1,13 +1,13 @@
 import axios from "axios";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState} from "react";
 import Pkm from "./Pkm";
 
 function Home() {
-  const mounted = useRef(true);
   const [list,setList]=useState();
   const [gen,setGen]=useState(1);
   
   useEffect(()=>{
+    let mounted=true;
     var lim,off;
     switch(gen){
       case 0:lim=898;off=0;break;
@@ -19,16 +19,17 @@ function Home() {
       case 6:lim=72;off=649;break;
       case 7:lim=88;off=721;break;
       case 8:lim=89;off=809;break;
+      case 9:lim=250;off=898;break;
       default:break;
     }
       
     axios.get('https://pokeapi.co/api/v2/pokemon?limit='+lim+'&offset='+off) 
         .then(response => {
-          if (mounted.current) setList(response.data);
+          if (mounted) setList(response.data);
         })
     .catch(err => console.log(err));
     
-    return ()=>{mounted.current = false;}
+    return ()=>{mounted = false;}
   },[gen,list]);
 
   return !list?null:(
@@ -44,6 +45,7 @@ function Home() {
           <option value="7">VII</option>
           <option value="8">VIII</option>
           <option value="0">All</option>
+          <option value="9">Forms</option>
         </select>
       </div>
       <table className="table table-hover table-dark text-center">

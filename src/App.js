@@ -2,12 +2,14 @@ import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-do
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import './App.css';
-import About from './components/About';
 import Home from './components/Home';
-import Contact from './components/Contact';
 import NotFound from './components/NotFound';
 import Type from './components/Type';
+import TypeList from './components/TypeList';
 import Ability from './components/Ability';
+import AbilityList from './components/AbilityList';
+import Move from './components/Move';
+import MoveList from './components/MoveList';
 
 
 function App() {
@@ -21,10 +23,13 @@ function App() {
             <NavLink exact to="/" className="nav-link" activeClassName="active">Home</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/about" className="nav-link" activeClassName="active">About</NavLink>
+            <NavLink exact to="/type" className="nav-link" activeClassName="active">Types</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to="/contact" className="nav-link" activeClassName="active">Contact</NavLink>
+            <NavLink exact to="/ability" className="nav-link" activeClassName="active">Abilities</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink exact to="/move" className="nav-link" activeClassName="active">Moves</NavLink>
           </li>
         </ul>
       </nav>
@@ -34,20 +39,25 @@ function App() {
           <Route exact path="/">
             <Home/>
           </Route>
-          <Route path="/about">
-            <About/>
+          <Route exact path="/type">
+            <TypeList/>
           </Route>
-          <Route path="/contact">
-            <Contact/>
-          </Route>
-          
           <Route path="/type/:typeId">
             <ScrollToTop/>
             <Type/>
           </Route>
+          <Route exact path="/ability">
+            <AbilityList/>
+          </Route>
           <Route path="/ability/:abiId">
             <ScrollToTop/>
             <Ability/>
+          </Route>
+          <Route exact path="/move">
+            <MoveList/>
+          </Route>
+          <Route path="/move/:moveId">
+            <Move/>
           </Route>
           <Route path="*">
             <NotFound/>

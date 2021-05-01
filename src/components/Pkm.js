@@ -1,18 +1,20 @@
 import axios from "axios";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import { formatText } from '../App'
+import { formatText } from '../App';
+import TypeBar from "./TypeBar";
+
 function Pkm(props) {
-  const mounted = useRef(true);
   const [data,setData]=useState();
   useEffect(()=>{
+    let mounted=true;
     axios.get(props.url) 
       .then(response => {
-        if (mounted.current) setData(response.data);
+        if (mounted) setData(response.data);
       })
       .catch(err => console.log(err));
     
-    return ()=>{mounted.current = false;}
+    return ()=>{mounted = false;}
   },[props.url]);
   
   return !data?null:(
@@ -24,9 +26,7 @@ function Pkm(props) {
       <td className="align-middle text-center">{formatText(data.name)}</td>
       <td className="align-middle text-center">
         <h5>{data.types.map((type)=>(
-          <Link to={`/type/${type.type.url.slice(31)}`} key={type.slot}>
-            <span className={`badge mr-1 ${type.type.name}`} >{formatText(type.type.name)}</span>
-          </Link>))}</h5>
+          <TypeBar key={type.slot} name={type.type.name} url={type.type.url}/>))}</h5>
       </td>
       <td className="align-middle text-center">
         {data.abilities.map((ability)=>(
