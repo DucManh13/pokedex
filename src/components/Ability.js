@@ -4,23 +4,24 @@ import { useParams } from 'react-router-dom';
 import { formatText } from '../App'
 import Pkm from "./Pkm";
 
-function Type(props) {
+function Ability(props) {
   const mounted = useRef(true);
   const [data,setData]=useState();
-  let { typeId } = useParams();
+  let { abiId } = useParams();
   useEffect(()=>{
-    axios.get('https://pokeapi.co/api/v2/type/'+typeId) 
+    axios.get('https://pokeapi.co/api/v2/ability/'+abiId) 
         .then(response => {
           if (mounted.current) setData(response.data);
         })
     .catch(err => console.log(err));
-    
+
     return ()=>{mounted.current = false;}
-  },[typeId,data]);
+  },[abiId,data]);
   
   return !data?null:(
     <div className="container-fluid">
-      <h2><span className={`badge ${data.name} my-3 text-white`}>{formatText(data.name)}</span></h2>
+      <h2 className="py-3">Ability: {formatText(data.name)}</h2>
+      <h4 className="pb-4 font-weight-normal">Description: {data.effect_entries.map((entry)=>entry.language.name==="en"?entry.effect:"")}</h4>
       <table className="table table-hover table-dark text-center">
         <thead>
           <tr>
@@ -39,4 +40,4 @@ function Type(props) {
     </div>
   );
 }
-export default Type;
+export default Ability;

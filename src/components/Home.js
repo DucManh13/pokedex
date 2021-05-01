@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Pkm from "./Pkm";
 
 function Home() {
+  const mounted = useRef(true);
   const [list,setList]=useState();
   const [gen,setGen]=useState(1);
   
@@ -23,15 +24,17 @@ function Home() {
       
     axios.get('https://pokeapi.co/api/v2/pokemon?limit='+lim+'&offset='+off) 
         .then(response => {
-          setList(response.data);
+          if (mounted.current) setList(response.data);
         })
     .catch(err => console.log(err));
+    
+    return ()=>{mounted.current = false;}
   },[gen,list]);
 
   return !list?null:(
     <div className="container-fluid">
-      <div class="form-group mt-3 w-25">
-        <select className="form-control" name="sltGen" value={gen} onChange={(e)=>setGen(parseInt(e.target.value))}>
+      <div className="form-group mt-3 w-25">
+        <select className="form-control" name="sltGen" value={gen} onChange={(e)=>setGen(+e.target.value)}>
           <option value="1">I</option>
           <option value="2">II</option>
           <option value="3">III</option>
