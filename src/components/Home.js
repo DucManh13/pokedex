@@ -36,14 +36,14 @@ function Home() {
     <div className="container-fluid">
       <div className="form-group mt-3 w-25">
         <select className="form-control" name="sltGen" value={gen} onChange={(e)=>setGen(+e.target.value)}>
-          <option value="1">I</option>
-          <option value="2">II</option>
-          <option value="3">III</option>
-          <option value="4">IV</option>
-          <option value="5">V</option>
-          <option value="6">VI</option>
-          <option value="7">VII</option>
-          <option value="8">VIII</option>
+          <option value="1">Gen I</option>
+          <option value="2">Gen II</option>
+          <option value="3">Gen III</option>
+          <option value="4">Gen IV</option>
+          <option value="5">Gen V</option>
+          <option value="6">Gen VI</option>
+          <option value="7">Gen VII</option>
+          <option value="8">Gen VIII</option>
           <option value="0">All</option>
           <option value="9">Forms</option>
         </select>

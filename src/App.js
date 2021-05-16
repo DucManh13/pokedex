@@ -44,14 +44,14 @@ function App() {
             <TypeList/>
           </Route>
           <Route path="/type/:typeId">
-            <ScrollToTop/>
+            <ScrToTop/>
             <Type/>
           </Route>
           <Route exact path="/ability">
             <AbilityList/>
           </Route>
           <Route path="/ability/:abiId">
-            <ScrollToTop/>
+            <ScrToTop/>
             <Ability/>
           </Route>
           <Route exact path="/move">
@@ -76,7 +76,7 @@ export const formatText=(text)=>{
   return text.split('-').map(word=>word.charAt(0).toUpperCase()+word.slice(1)).join(' ');
 }
 
-export const ScrollToTop=()=> {
+export const ScrToTop=()=> {
   const { pathname } = useLocation();
 
   useEffect(() => {
