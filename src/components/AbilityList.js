@@ -14,7 +14,7 @@ function AbilityList() {
     .catch(err => console.log(err));
     
     return ()=>{mounted= false;}
-  },[data]);
+  },[]);
   
   return !data?null:(
     <div className="container-fluid bg-dark text-white p-3">

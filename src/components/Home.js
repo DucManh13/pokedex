@@ -30,7 +30,7 @@ function Home() {
     .catch(err => console.log(err));
     
     return ()=>{mounted = false;}
-  },[gen,list]);
+  },[gen]);
 
   return !list?null:(
     <div className="container-fluid">

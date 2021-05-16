@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, NavLink, Route, Switch } from 'react-router-dom';
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import ScrollToTop from "react-scroll-up";
 import './App.css';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
@@ -63,7 +64,11 @@ function App() {
             <NotFound/>
           </Route>
         </Switch>
-      </div>      
+      </div>
+
+      <ScrollToTop showUnder={300}>
+        <button className="btn btn-lg btn-info"><i className="fas fa-lg fa-angle-up"></i></button>
+      </ScrollToTop>   
     </Router>
   );
 }

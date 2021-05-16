@@ -17,7 +17,7 @@ function Type(props) {
     .catch(err => console.log(err));
     
     return ()=>{mounted= false;}
-  },[typeId,data]);
+  },[typeId]);
   
   return !data?null:(
     <div className="container-fluid">
@@ -61,16 +61,16 @@ function Type(props) {
       <table className="table table-bordered table-dark text-center">
         <thead>
           <tr>
-          <th className="w-50">x0 from</th>
           <th className="w-50">x0 to</th>
+          <th className="w-50">x0 from</th>
           </tr>          
         </thead>
         <tbody>
           <tr>
-            <td>{data.damage_relations.no_damage_from.map((type,index)=>(
+            <td>{data.damage_relations.no_damage_to.map((type,index)=>(
               <h5 key={index}><TypeBar name={type.name} url={type.url}/></h5>))}
             </td>
-            <td>{data.damage_relations.no_damage_to.map((type,index)=>(
+            <td>{data.damage_relations.no_damage_from.map((type,index)=>(
               <h5 key={index}><TypeBar name={type.name} url={type.url}/></h5>))}
             </td>
           </tr>

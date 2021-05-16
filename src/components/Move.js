@@ -17,7 +17,7 @@ function Ability(props) {
     .catch(err => console.log(err));
 
     return ()=>{mounted = false;}
-  },[moveId,data]);
+  },[moveId]);
   
   return !data?null:(
     <div className="container-fluid">
