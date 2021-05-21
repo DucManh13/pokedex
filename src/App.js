@@ -11,6 +11,7 @@ import Ability from './components/Ability';
 import AbilityList from './components/AbilityList';
 import Move from './components/Move';
 import MoveList from './components/MoveList';
+import PkInfo from './components/PkInfo';
 
 
 function App() {
@@ -39,6 +40,12 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home/>
+          </Route>
+          <Route exact path="/pokemon">
+            <Home/>
+          </Route>
+          <Route exact path="/pokemon/:pkId">
+            <PkInfo/>
           </Route>
           <Route exact path="/type">
             <TypeList/>
@@ -73,7 +80,8 @@ function App() {
   );
 }
 export const formatText=(text)=>{
-  return text.split('-').map(word=>word.charAt(0).toUpperCase()+word.slice(1)).join(' ');
+  if (text==="porygon-z") return "Porygon-Z";
+  else return text.split('-').map(word=>word.charAt(0).toUpperCase()+word.slice(1)).join(' ');
 }
 
 export const ScrToTop=()=> {

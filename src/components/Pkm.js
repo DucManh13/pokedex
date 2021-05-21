@@ -21,9 +21,15 @@ function Pkm(props) {
     <tr >
       <td className="align-middle text-center">{data.id}</td>
       <td className="align-middle text-center">
-        <img src={data.sprites.other['official-artwork'].front_default} className="img-fluid" alt={data.name}/>
+        <Link to={`/pokemon/${data.id}`}>
+          <img src={data.sprites.other['official-artwork'].front_default} className="img-fluid" alt={data.name}/>
+        </Link>
       </td>      
-      <td className="align-middle text-center">{formatText(data.name)}</td>
+      <td className="align-middle text-center">
+        <Link to={`/pokemon/${data.id}`}>
+          {formatText(data.name)}
+        </Link>  
+      </td>
       <td className="align-middle text-center">
         <h5>{data.types.map((type)=>(
           <TypeBar key={type.slot} name={type.type.name} url={type.type.url}/>))}</h5>

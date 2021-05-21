@@ -26,12 +26,12 @@ function Ability(props) {
       <table className="table table-hover table-dark text-center mt-4">
         <thead>
           <tr>
-          <th>No.</th>
-          <th style={{width: "15%"}}>Sprite</th>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Ability</th>
-          <th style={{width: "30%"}}>Stat</th>
+            <th>No.</th>
+            <th style={{width: "15%"}}>Artwork</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Ability</th>
+            <th style={{width: "30%"}}>Stat</th>
           </tr>          
         </thead>
         <tbody>

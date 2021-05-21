@@ -20,9 +20,9 @@ function TypeList() {
       <h1>Type List</h1>
       <hr/>
       <div className="container py-4 ">
-      <div className="row row-cols-sm-3 text-center w-50 mx-auto">
+      <div className="row row-cols-lg-3 row-cols-md-2 row-cols-1 text-center w-50 mx-auto">
           {data.results.map((type,index)=>(index>17?'':
-            <h2 key={index} className="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <h2 key={index} >
               <TypeBar name={type.name} url={type.url} width="w-120"/>
             </h2>
           ))}
