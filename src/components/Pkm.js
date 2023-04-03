@@ -31,7 +31,7 @@ function Pkm(props) {
         </Link>  
       </td>
       <td className="align-middle text-center">
-        <h5>{data.types.map((type)=>(
+        <h5 className="mb-0">{data.types.map((type)=>(
           <TypeBar key={type.slot} name={type.type.name} url={type.type.url}/>))}</h5>
       </td>
       <td className="align-middle text-center">
@@ -41,7 +41,7 @@ function Pkm(props) {
           </Link>))}
       </td>
       <td className="align-middle text-center">
-        {data.stats.map((stat,index)=>(<span key={index}><div className={`progress-bar mb-1 ${stat.stat.name}`} style={{width:`${stat.base_stat/2.5}%`}}>{stat.base_stat}</div></span>))}
+        {data.stats.map((stat,index)=>(<span key={index} className="d-flex"><div className={`progress-bar mb-1 ${stat.stat.name}`} style={{width:`${stat.base_stat/2.5}%`}}>{stat.base_stat}</div>{stat.base_stat===1?<div className="ml-1">1</div>:null}</span>))}
       </td>
     </tr>
   );

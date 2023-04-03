@@ -10,7 +10,7 @@ function Home() {
     let mounted=true;
     var lim,off;
     switch(gen){
-      case 0:lim=898;off=0;break;
+      case 0:lim=1010;off=0;break;
       case 1:lim=151;off=0;break;
       case 2:lim=100;off=151;break;
       case 3:lim=135;off=251;break;
@@ -18,8 +18,9 @@ function Home() {
       case 5:lim=156;off=493;break;
       case 6:lim=72;off=649;break;
       case 7:lim=88;off=721;break;
-      case 8:lim=89;off=809;break;
-      case 9:lim=250;off=898;break;
+      case 8:lim=96;off=809;break;
+      case 9:lim=105;off=905;break;
+      case -1:lim=300;off=1010;break;
       default:break;
     }
       
@@ -44,8 +45,9 @@ function Home() {
           <option value="6">Gen VI</option>
           <option value="7">Gen VII</option>
           <option value="8">Gen VIII</option>
+          <option value="9">Gen IX</option>
           <option value="0">All</option>
-          <option value="9">Forms</option>
+          <option value="-1">Forms</option>
         </select>
       </div>
       <table className="table table-hover table-dark text-center">

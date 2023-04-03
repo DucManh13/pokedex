@@ -27,7 +27,7 @@ function PkInfo(props) {
   },[pkId]);
   
   return !(data&&species)?null:(
-    <div className="container bg-dark text-white font-weight-normal">      
+    <div className="container bg-dark text-white font-weight-normal p-3">      
       <table className="table table-dark text-center table-bordered mb-0">
         <thead>
           <tr>
@@ -52,7 +52,7 @@ function PkInfo(props) {
               </Link>  
             </td>
             <td className="align-middle text-center">
-              <h5>{data.types.map((type)=>(
+              <h5 className="mb-0">{data.types.map((type)=>(
                 <TypeBar key={type.slot} name={type.type.name} url={type.type.url}/>))}</h5>
             </td>
             <td className="align-middle text-center">
@@ -129,7 +129,7 @@ function PkInfo(props) {
             <th style={{width: "25%"}}>Base experience yield</th>
             <th style={{width: "25%"}}>Capture rate</th>
             <th style={{width: "25%"}}>Base happiness</th>
-            <th style={{width: "25%"}}>Hack steps</th>
+            <th style={{width: "25%"}}>Hatch steps</th>
           </tr>          
         </thead>
         <tbody>
@@ -151,9 +151,9 @@ function PkInfo(props) {
       </table>
       
       <Evolution url={species.evolution_chain.url}/>
-      <div className=" container font-weight-bold">
+      <div className="container font-weight-bold px-0">
         Stats 
-        {data.stats.map((stat,index)=>(<span key={index}><div className={`progress-bar mt-1 ${stat.stat.name}`} style={{width:`${stat.base_stat/2.5}%`}}>{stat.base_stat}</div></span>))}
+        {data.stats.map((stat,index)=>(<span key={index} className="d-flex"><div className={`progress-bar mt-1 ${stat.stat.name}`} style={{width:`${stat.base_stat/2.5}%`}}>{stat.base_stat}</div>{stat.base_stat===1?<div className="ml-1">1</div>:null}</span>))}
       </div>
       
       <button type="button" className="btn btn-danger my-3" data-toggle="collapse" data-target="#dex">Dex Entries</button>
@@ -211,7 +211,7 @@ function PkInfo(props) {
           </tr>}
         </tbody>
       </table>
-      <img src={data.sprites.other.dream_world.front_default} className="img-fluid" alt=""/>
+      <img width='200' height='200' src={data.sprites.other.dream_world.front_default} className="img-fluid" alt=""/>
     </div>
   );
 }

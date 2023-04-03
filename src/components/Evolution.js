@@ -11,12 +11,12 @@ function Evolution(props) {
           if (mounted) setData(response.data);
         })
     .catch(err => console.log(err));
-    
+
     return ()=>{mounted= false;}
   },[props.url]);
-  
+
   return !data?null:(
-    <div className="container my-2">
+    <div className="container my-2 px-0">
       <div className="font-weight-bold">
         Evolution chain: 
       </div>
@@ -28,7 +28,7 @@ function Evolution(props) {
         {data.chain.evolves_to.map((stage1,index)=>(
           <div className="row" key={index}>
             <div className="col-6">
-              {"=> "+formatText(stage1.species.name)} 
+              {"=> "+formatText(stage1.species.name)}
             </div>
             <div className="col-6">
               {stage1.evolves_to.map((stage2,index)=>(
