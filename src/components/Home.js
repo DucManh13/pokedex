@@ -1,42 +1,58 @@
-import axios from "axios";
-import { useEffect, useState} from "react";
-import Pkm from "./Pkm";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Pkm from './Pkm';
 
 function Home() {
-  const [list,setList]=useState();
-  const [gen,setGen]=useState(1);
-  
-  useEffect(()=>{
-    let mounted=true;
-    var lim,off;
-    switch(gen){
-      case 0:lim=1010;off=0;break;
-      case 1:lim=151;off=0;break;
-      case 2:lim=100;off=151;break;
-      case 3:lim=135;off=251;break;
-      case 4:lim=107;off=386;break;
-      case 5:lim=156;off=493;break;
-      case 6:lim=72;off=649;break;
-      case 7:lim=88;off=721;break;
-      case 8:lim=96;off=809;break;
-      case 9:lim=105;off=905;break;
-      case -1:lim=300;off=1010;break;
-      default:break;
-    }
-      
-    axios.get('https://pokeapi.co/api/v2/pokemon?limit='+lim+'&offset='+off) 
-        .then(response => {
-          if (mounted) setList(response.data);
-        })
-    .catch(err => console.log(err));
-    
-    return ()=>{mounted = false;}
-  },[gen]);
+  const [list, setList] = useState();
+  const [gen, setGen] = useState(1);
 
-  return !list?null:(
+  useEffect(() => {
+    let mounted = true;
+
+    const genData = [
+      { off: 0, lim: 1025 }, // all
+      { off: 0, lim: 151 }, // gen 1
+      { off: 151, lim: 100 }, // gen 2
+      { off: 251, lim: 135 }, // gen 3
+      { off: 386, lim: 107 }, // gen 4
+      { off: 493, lim: 156 }, // gen 5
+      { off: 649, lim: 72 }, // gen 6
+      { off: 721, lim: 88 }, // gen 7
+      { off: 809, lim: 96 }, // gen 8
+      { off: 905, lim: 120 }, // gen 9
+    ];
+
+    let lim = 0;
+    let off = 0;
+
+    if (gen === -1) {
+      off = 1025;
+      lim = 300;
+    } else if (gen >= 0 && gen < genData.length) {
+      ({ off, lim } = genData[gen]);
+    }
+
+    axios
+      .get('https://pokeapi.co/api/v2/pokemon?limit=' + lim + '&offset=' + off)
+      .then((response) => {
+        if (mounted) setList(response.data);
+      })
+      .catch((err) => console.log(err));
+
+    return () => {
+      mounted = false;
+    };
+  }, [gen]);
+
+  return !list ? null : (
     <div className="container-fluid">
       <div className="form-group mt-3 w-25">
-        <select className="form-control" name="sltGen" value={gen} onChange={(e)=>setGen(+e.target.value)}>
+        <select
+          className="form-control"
+          name="sltGen"
+          value={gen}
+          onChange={(e) => setGen(+e.target.value)}
+        >
           <option value="1">Gen I</option>
           <option value="2">Gen II</option>
           <option value="3">Gen III</option>
@@ -54,17 +70,19 @@ function Home() {
         <thead>
           <tr>
             <th>No.</th>
-            <th style={{width: "15%"}}>Artwork</th>
+            <th style={{ width: '15%' }}>Artwork</th>
             <th>Name</th>
             <th>Type</th>
             <th>Ability</th>
-            <th style={{width: "30%"}}>Stat</th>
-          </tr>          
+            <th style={{ width: '30%' }}>Stat</th>
+          </tr>
         </thead>
         <tbody>
-          {list.results.map((item,index)=><Pkm key={index} url={item.url}/>)}
+          {list.results.map((item, index) => (
+            <Pkm key={index} url={item.url} />
+          ))}
         </tbody>
-      </table>    
+      </table>
     </div>
   );
 }
