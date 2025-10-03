@@ -7,12 +7,19 @@ import PropTypes from 'prop-types';
 
 function Pkm(props) {
   const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     let mounted = true;
+    setLoading(true);
+
     axios
       .get(props.url)
       .then((response) => {
-        if (mounted) setData(response.data);
+        if (mounted) {
+          setData(response.data);
+          setLoading(false);
+        }
       })
       .catch((err) => console.log(err));
 
@@ -25,13 +32,17 @@ function Pkm(props) {
     <tr>
       <td className="align-middle text-center">{data.id}</td>
       <td className="align-middle text-center">
-        <Link to={`/pokemon/${data.id}`}>
-          <img
-            src={data.sprites.other['official-artwork'].front_default}
-            className="img-fluid"
-            alt={data.name}
-          />
-        </Link>
+        {loading ? (
+          <div className="spinner-border text-secondary" role="status"></div>
+        ) : (
+          <Link to={`/pokemon/${data.id}`}>
+            <img
+              src={data.sprites.other['official-artwork'].front_default}
+              className="img-fluid"
+              alt={data.name}
+            />
+          </Link>
+        )}
       </td>
       <td className="align-middle text-center">
         <Link to={`/pokemon/${data.id}`}>{formatText(data.name)}</Link>

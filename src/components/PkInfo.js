@@ -10,6 +10,7 @@ function PkInfo() {
   const [data, setData] = useState();
   const [species, setSpecies] = useState();
   let { pkId } = useParams();
+
   useEffect(() => {
     let mounted = true;
     axios
@@ -206,7 +207,9 @@ function PkInfo() {
         {species.flavor_text_entries.map((entry, index) =>
           entry.language.name !== 'en' ? null : (
             <p key={index}>
-              {formatText(entry.version.name)} :{' '}
+              <span className={`version ${entry.version.name}`}>
+                {formatText(entry.version.name)}
+              </span>{' '}
               {entry.flavor_text.replace('', ' ').replace('POKéMON', 'Pokémon')}{' '}
             </p>
           ),

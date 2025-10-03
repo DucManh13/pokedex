@@ -65,7 +65,7 @@ function App() {
         </ul>
       </nav>
       {/* Content */}
-      <div className="font-weight-bold">
+      <div className="font-weight-bold content-area">
         <Switch>
           <Route exact path="/">
             <Home />

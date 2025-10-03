@@ -38,10 +38,27 @@
 }
 
 a {
-  color: #FFF;
+  color: #fff;
 }
 a:hover {
-   color: #999;
+   color: #fff;
+}
+
+.badge {
+  transition: transform 180ms ease;
+  transform-origin: center;
+}
+
+.badge:hover {
+ transform: scale(1.08);
+}
+
+.navbar {
+  min-height: 60px;
+}
+
+.content-area > div {
+  min-height: calc(100vh - 60px);
 }
 
 .grass {
@@ -123,4 +140,192 @@ a:hover {
 }
 .w-120 {
   width:120px;
+}
+
+.version {
+  display: inline-block;
+  text-align: center;
+  padding: 2px;
+  border-radius: 2px;
+  color: black;
+  min-width: 120px;
+}
+.red {
+  background-color: #FF0000;
+  color: white;
+}
+
+.blue {
+  background-color: #0000FF;
+  color: white;
+}
+
+.green {
+  background-color: #00DD00;
+  color: black;
+}
+
+.yellow {
+  background-color: #FFD700;
+  color: black;
+}
+
+.gold {
+  background-color: #D4AF37;
+  color: black;
+}
+
+.silver {
+  background-color: #C0C0C0;
+  color: black;
+}
+
+.crystal {
+  background-color: #A7D3F4;
+  color: black;
+}
+
+.ruby {
+  background-color: #9B111E;
+  color: white;
+}
+
+.sapphire {
+  background-color: #0F52BA;
+  color: white;
+}
+
+.emerald {
+  background-color: #50C878;
+  color: black;
+}
+
+.firered {
+  background-color: #F08030;
+  color: black;
+}
+
+.leafgreen {
+  background-color: #78C850;
+  color: black;
+}
+
+.diamond {
+  background-color: #B9F2FF;
+  color: black;
+}
+
+.pearl {
+  background-color: #EAE0DC;
+  color: black;
+}
+
+.platinum {
+  background-color: #E5E4E2;
+  color: black;
+}
+
+.heartgold {
+  background-color: #DAA520;
+  color: black;
+}
+
+.soulsilver {
+  background-color: #B0C4DE;
+  color: black;
+}
+
+.black {
+  background-color: #1C1C1C;
+  color: white;
+}
+
+.white {
+  background-color: #F8F8FF;
+  color: black;
+}
+
+.black-2 {
+  background-color: #2B2B2B;
+  color: white;
+}
+
+.white-2 {
+  background-color: #F0F0F0;
+  color: black;
+}
+
+.x {
+  background-color: #4A90E2;
+  color: white;
+}
+
+.y {
+  background-color: #D0021B;
+  color: white;
+}
+
+.omega-ruby {
+  background-color: #B22222;
+  color: white;
+}
+
+.alpha-sapphire {
+  background-color: #4169E1;
+  color: white;
+}
+
+.sun {
+  background-color: #FFA500;
+  color: black;
+}
+
+.moon {
+  background-color: #191970;
+  color: white;
+}
+
+.ultra-sun {
+  background-color: #FF8C00;
+  color: black;
+}
+
+.ultra-moon {
+  background-color: #483D8B;
+  color: white;
+}
+
+.lets-go-pikachu {
+  background-color: #f7d02c;
+  color: black;
+}
+
+.lets-go-eevee {
+  background-color: #c8a165;
+  color: black;
+}
+
+.sword {
+  background-color: #5DADEC;
+  color: black;
+}
+
+.shield {
+  background-color: #FF4D6D;
+  color: black;
+}
+
+.legends-arceus {
+  background-color: #6E7582;
+  color: white;
+}
+
+.scarlet {
+  background-color: #DC143C;
+  color: white;
+}
+
+.violet {
+  background-color: #8A2BE2;
+  color: white;
 }
